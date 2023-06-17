@@ -69,8 +69,18 @@ export default function Home() {
 
 const URL = 'https://api.mandarin.weniv.co.kr';
 
-async function getPost() {
+async function getPost(category, userId) {
     let requestPath = '/post';
+    const type = category;
+
+    if (type === '') {
+        requestPath = '/post'
+    }else if (type ==='my') {
+        requestPath = `/post/${userId}/userpost}`
+    }else if (type === 'feed') {
+        requestPath= '/post/feed'
+    }
+
 
     const requestUrl = `${URL}${requestPath}`;
 
